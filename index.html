@@ -4,179 +4,250 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vidwath Vinayakula</title>
-<meta name="description" content="High school junior in Skillman, NJ. Software testing, CNC fabrication, and things that move.">
+<meta name="description" content="Junior at Montgomery High School. CNC captain on FRC Team 1403, former software engineering intern at Ziplyne.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=B612:wght@400;700&family=Public+Sans:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#E7EAED;
-    --paper:#F6F7F8;
-    --ink:#172030;
-    --muted:#566173;
-    --accent:#2B4BD6;
-    --flash:#FFC531;
-    --line:#C9CFD6;
+    --paper:#F4F7F8;
+    --grid:rgba(31,95,191,.08);
+    --ink:#1B2230;
+    --muted:#586273;
+    --rule:#B9C2CC;
+    --blue:#1F5FBF;
+    --amber:#F2B705;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
   body{
-    font-family:"Archivo",system-ui,sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    font-size:1.0625rem;
-    line-height:1.6;
+    font-family:"Public Sans",system-ui,sans-serif;
+    color:var(--ink);font-size:1.05rem;line-height:1.65;
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px,transparent 1px),
+      linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:24px 24px;
   }
-  a{color:var(--accent);text-underline-offset:3px}
-  a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
-  .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem}
+  a{color:var(--blue);text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
 
-  /* Hero */
-  .hero{
-    display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;
-    padding:5rem 0 4rem;
+  .sheet{
+    max-width:68rem;margin:2.5rem auto;
+    background:rgba(244,247,248,.94);
+    border:2px solid var(--ink);
+    outline:1px solid var(--ink);outline-offset:7px;
+    padding:3rem clamp(1.25rem,4vw,3.5rem) 2.5rem;
   }
-  h1{
-    font-stretch:125%;font-weight:800;
-    font-size:clamp(2.6rem,7vw,4.8rem);
-    line-height:.98;letter-spacing:-.01em;
-  }
-  .intro{margin-top:1.25rem;max-width:34rem;font-size:1.2rem;color:var(--muted)}
-  .intro strong{color:var(--ink);font-weight:600}
+  h1,h2,h3,.tb,.fig-label,.toggle{font-family:"B612",sans-serif}
 
-  /* Strobe demo */
-  figure{width:260px;text-align:center}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:3rem;align-items:start}
+  h1{font-size:clamp(2.4rem,6.5vw,4.1rem);line-height:1.02;font-weight:700;letter-spacing:-.01em}
+  .intro{margin-top:1.1rem;max-width:38rem}
+  .intro + .intro{margin-top:.8rem}
+
+  .tb{margin-top:1.75rem;border-collapse:collapse;font-size:.8rem;border:2px solid var(--ink);max-width:30rem;width:100%}
+  .tb th,.tb td{border:1px solid var(--ink);padding:.4rem .65rem;text-align:left;vertical-align:top}
+  .tb th{font-weight:400;color:var(--muted);width:7.5rem}
+
+  figure{width:280px}
   svg{width:100%;height:auto;display:block}
-  .disc-bg{fill:#D3D8DE;stroke:var(--line);stroke-width:2}
-  .frame{fill:var(--paper);stroke:var(--muted);stroke-width:1}
-  .ground{stroke:var(--muted);stroke-width:1.5}
+  .disc-face{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+  .center-line{stroke:var(--muted);stroke-width:.8;stroke-dasharray:10 3 2 3}
+  .frame{fill:#fff;stroke:var(--ink);stroke-width:1}
+  .ground{stroke:var(--ink);stroke-width:1.5}
   .ball{fill:var(--ink)}
-  .hub{fill:var(--muted)}
-  .shade{fill:var(--ink);opacity:.82}
-  .win-edge{fill:none;stroke:var(--flash);stroke-width:3}
-  .disc{transform-origin:120px 120px;animation:spin 1.2s steps(12,end) infinite}
+  .hub{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+  .shade{fill:var(--ink);opacity:.86}
+  .win-edge{fill:none;stroke:var(--amber);stroke-width:3}
+  .disc{transform-origin:120px 120px;animation:spin .6s steps(6,end) infinite}
   .win-edge{animation:flash .1s linear infinite}
   .strobe-off .disc{animation-timing-function:linear}
   .strobe-off .win-edge{animation:none;stroke:var(--muted)}
   @keyframes spin{to{transform:rotate(-360deg)}}
-  @keyframes flash{0%{opacity:1}40%{opacity:.25}100%{opacity:.25}}
-  figcaption{margin-top:.9rem;font-size:.9rem;color:var(--muted);line-height:1.45}
+  @keyframes flash{0%{opacity:1}35%{opacity:.2}100%{opacity:.2}}
+  @media (prefers-reduced-motion:reduce){.disc,.win-edge{animation:none}}
   .toggle{
-    margin-top:.9rem;font:inherit;font-weight:600;font-size:.95rem;
-    background:var(--ink);color:var(--paper);border:0;border-radius:999px;
-    padding:.55rem 1.2rem;cursor:pointer;
+    margin-top:.9rem;font-size:.85rem;cursor:pointer;
+    background:var(--ink);color:var(--paper);
+    border:2px solid var(--ink);padding:.45rem 1rem;
   }
-  .toggle:hover{background:var(--accent)}
-  @media (prefers-reduced-motion:reduce){
-    .disc,.win-edge{animation:none}
-  }
+  .toggle:hover{background:var(--blue);border-color:var(--blue)}
+  figcaption{margin-top:.8rem;font-size:.88rem;color:var(--muted);line-height:1.5}
+  .fig-label{color:var(--ink)}
 
-  /* Sections */
-  section{padding:3rem 0;border-top:1px solid var(--line)}
-  h2{font-stretch:110%;font-weight:700;font-size:1.6rem;margin-bottom:1.5rem}
-  .entry{padding:1.25rem 0;max-width:46rem}
-  .entry + .entry{border-top:1px dashed var(--line)}
-  .entry-head{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
-  h3{font-size:1.15rem;font-weight:700}
-  .when{color:var(--muted);font-size:.95rem;white-space:nowrap}
-  .org{color:var(--muted);font-size:.98rem;margin-bottom:.4rem}
-  .entry p:last-child{max-width:42rem}
+  section{margin-top:3.5rem}
+  h2{font-size:1.45rem;padding-bottom:.35rem;border-bottom:2px solid var(--ink);margin-bottom:.5rem}
+  .entry{padding:1.4rem 0;border-bottom:1px dashed var(--rule)}
+  .entry:last-child{border-bottom:0}
+  .head{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.2rem 1.25rem;align-items:baseline}
+  h3{font-size:1.1rem}
+  .meta{color:var(--muted);font-size:.92rem}
+  .lede{margin:.55rem 0 .5rem;max-width:44rem}
+  .notes{padding-left:1.2rem;max-width:44rem}
+  .notes li{margin:.4rem 0}
+  .notes li::marker{color:var(--blue)}
 
-  .contact p{font-size:1.25rem;max-width:40rem}
-  footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem}
+  .tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.25rem 2rem;margin-top:1.25rem}
+  .tools h3{font-size:.95rem;margin-bottom:.25rem}
+  .tools p{color:var(--muted);font-size:.98rem}
 
-  @media (max-width:760px){
-    .hero{grid-template-columns:1fr;padding:3.5rem 0 3rem}
+  footer{margin-top:3rem;padding-top:1rem;border-top:2px solid var(--ink);font-size:.85rem;color:var(--muted)}
+
+  @media (max-width:780px){
+    .hero{grid-template-columns:minmax(0,1fr)}
     figure{margin:0 auto}
+    .sheet{margin:1rem .75rem;outline-offset:4px}
   }
 </style>
 </head>
 <body>
-<main class="wrap">
+<main class="sheet">
 
   <header class="hero">
     <div>
       <h1>Vidwath<br>Vinayakula</h1>
-      <p class="intro">High school junior in Skillman, New Jersey. I <strong>test software</strong>, <strong>machine robot parts</strong>, and build things that move.</p>
+      <p class="intro">I'm a junior at Montgomery High School in Skillman, New Jersey. Most of my time goes into robotics, where I run the CNC machines for FRC Team 1403, and into whatever project I'm currently stuck on.</p>
+      <p class="intro">This past summer I spent nine weeks as a software engineering intern at Ziplyne, an AI startup, trying to figure out why their agents kept breaking. I like work where you can actually check if you got it right. The part fits or it doesn't. The test passes or it doesn't.</p>
+      <table class="tb">
+        <tr><th>Name</th><td>Vidwath Vinayakula</td></tr>
+        <tr><th>School</th><td>Montgomery High School, class of 2028</td></tr>
+        <tr><th>Based in</th><td>Skillman, NJ</td></tr>
+        <tr><th>Contact</th><td><a href="mailto:vidwathvinayakula@gmail.com">vidwathvinayakula@gmail.com</a></td></tr>
+        <tr><th>Last updated</th><td>October 2026</td></tr>
+      </table>
     </div>
 
     <figure id="strobe">
-      <svg viewBox="0 0 240 240" role="img" aria-label="A spinning disc of drawings. A strobe catches each frame in the same spot, so a ball appears to bounce.">
+      <svg viewBox="0 0 240 240" role="img" aria-label="A disc with six frames spinning under a strobe light. Because the strobe catches each frame in the same spot, a ball looks like it's bouncing.">
         <defs>
           <mask id="win">
             <rect width="240" height="240" fill="white"/>
-            <rect x="100" y="11" width="40" height="42" rx="5" fill="black"/>
+            <rect x="95" y="6" width="50" height="52" rx="2" fill="black"/>
           </mask>
         </defs>
-        <circle class="disc-bg" cx="120" cy="120" r="114"/>
+        <circle class="disc-face" cx="120" cy="120" r="114"/>
         <g class="disc" id="disc"></g>
-        <circle class="hub" cx="120" cy="120" r="7"/>
+        <line class="center-line" x1="0" y1="120" x2="240" y2="120"/>
+        <line class="center-line" x1="120" y1="64" x2="120" y2="240"/>
+        <circle class="hub" cx="120" cy="120" r="9"/>
         <circle class="shade" cx="120" cy="120" r="115" mask="url(#win)"/>
-        <rect class="win-edge" x="100" y="11" width="40" height="42" rx="5"/>
+        <rect class="win-edge" x="95" y="6" width="50" height="52" rx="2"/>
       </svg>
       <button class="toggle" id="toggle" aria-pressed="true">Strobe: on</button>
-      <figcaption>How my Fabergé egg works: the disc spins, and a strobe catches each drawing in the same spot. Turn the strobe off to see what's really happening.</figcaption>
+      <figcaption><span class="fig-label">Fig. 1.</span> How my Fabergé egg works, simplified. The disc spins, and the strobe flashes once per frame, so every drawing shows up in the same spot and the ball looks like it's bouncing. Turn the strobe off to see what's really going on.</figcaption>
     </figure>
   </header>
 
   <section>
     <h2>Experience</h2>
+
     <div class="entry">
-      <div class="entry-head"><h3>Software Engineering Intern</h3><span class="when">July – Sept. 2026</span></div>
-      <p class="org">Ziplyne</p>
-      <p>Wrote and ran 200+ Java and Python test cases for AI agents that automate HR tasks in Workday for enterprise clients, including Johns Hopkins. I sorted the failures into six categories, benchmarked execution speeds across test frameworks, and presented our findings to the 15-person engineering team, which built our recommendations into a new release. I also produced 100+ video test cases for the company's digital adoption software.</p>
+      <div class="head"><h3>Software Engineering Intern, Ziplyne</h3><span class="meta">July – Sept. 2026, about 20 hours a week</span></div>
+      <p class="lede">Ziplyne builds AI agents that sit on top of enterprise software like Workday and handle HR tasks for companies, including Johns Hopkins. I was one of five software engineering interns (about one in five applicants got in), and our job was to figure out where the agents were breaking.</p>
+      <ul class="notes">
+        <li>Wrote and ran somewhere between 200 and 300 test cases on the company's demo site, which kicked off tests in Workday and tracked how the agents moved through each task.</li>
+        <li>The bugs weren't always obvious. We found problems with data-driven tests (DDTs), visual and manual assertions, step timing, pages that didn't finish loading, steps that got shuffled out of order, and test documentation that didn't match what the product actually did.</li>
+        <li>Some failures only showed up some of the time. So I built a timetable comparing execution speeds across several test frameworks, which let us say how often a problem happened instead of just calling it "flaky."</li>
+        <li>Helped lead our presentation to the full software engineering team, about 15 people. Telling engineers what's wrong with code they wrote is a lot of pressure as a high schooler. They used our findings to build a new version for clients.</li>
+        <li>Sent our data on the test-case process straight to the product manager.</li>
+        <li>Made 100 to 200 video test cases for their new digital adoption testing software, videos that walk a user through what to do next.</li>
+        <li>Worked in Java and Python and committed code to the company's GitHub repository.</li>
+      </ul>
     </div>
+
     <div class="entry">
-      <div class="entry-head"><h3>CNC Captain, FRC Team 1403</h3><span class="when">2024 – present</span></div>
-      <p class="org">Montgomery High School</p>
-      <p>About 95% of last season's robot parts went through our CNC mill and router. I taught myself CAD and CAM in Autodesk Fusion and now train new members on the machines. The team won its first district event in five years, earned the FIRST Quality Award, and qualified for the FIRST Championship in Houston.</p>
+      <div class="head"><h3>CNC Captain, FRC Team 1403</h3><span class="meta">2024 – present</span></div>
+      <p class="lede">Montgomery High School's FIRST Robotics Competition team. I've been CNC captain since sophomore year.</p>
+      <ul class="notes">
+        <li>Around 95% of the parts on our robot go through the CNC mill or router. I handle the CAM side: adaptive clearing, boring, and contouring.</li>
+        <li>These are industrial-grade machines. One bad toolpath can wreck a part or set the whole build schedule back, so there isn't much room for mistakes.</li>
+        <li>I learned CAD and CAM in Autodesk Fusion on my own through online courses. Now I'm the one teaching new members how to run the machines.</li>
+        <li>Parts I've fabricated include the glides, winch, wrist, climber, algae/coral intake, and elevator.</li>
+        <li>Last season the team won its first district event in five years, finished top 7 in the region, and qualified for the FIRST Championship in Houston. We also won the Quality Award, which judges give for how well a robot is built.</li>
+        <li>About 400 hours on the team over two seasons, plus around 60 volunteer hours, including teaching FIRST LEGO League to kids in grades K–8.</li>
+        <li>I also led our team chants at Hatboro, Montgomery, and the District Championship. Somebody had to.</li>
+      </ul>
     </div>
   </section>
 
   <section>
     <h2>Projects</h2>
+
     <div class="entry">
-      <div class="entry-head"><h3>Fabergé Egg Stroboscope</h3><span class="when">2025</span></div>
-      <p class="org">Independent project · Arduino, Tinkercad</p>
-      <p>An Arduino-powered egg that spins seven interchangeable discs under a strobe light to tell the story of Rasputin. I wrote the motor and strobe code, prototyped the circuit in Tinkercad, and worked through 50+ hours of failures in code, power delivery, and fitting everything inside a curved shell. The demo at the top of this page works the same way.</p>
+      <div class="head"><h3>Fabergé Egg Stroboscope</h3><span class="meta">2025, independent project</span></div>
+      <p class="lede">An egg that tells the story of Rasputin. Inside, a disc of drawings spins on a DC motor while a strobe light flashes once per frame, so the drawings look like they're moving. Fig. 1 at the top of this page is a simplified version.</p>
+      <ul class="notes">
+        <li>Seven interchangeable discs, one for each act of the story, with six frames on each.</li>
+        <li>An Arduino controls both the motor speed and the strobe timing. I wrote the code.</li>
+        <li>The flash rate has to match the disc exactly: rotations per second times frames per disc. If it's even slightly off, the picture drifts. I used potentiometers to dial in the output by hand.</li>
+        <li>The circuit runs on a breadboard with diodes, NMOS transistors, and capacitors. I simulated it in Tinkercad before building anything real.</li>
+        <li>It took over 50 hours, and a lot of that was failing. The code broke first. Then I couldn't get the power right. Then came the hardest part: the egg is curved, so fitting the strobe at the top and the motors, potentiometer, and circuit board at the bottom took a lot of measuring and remeasuring.</li>
+        <li>I doubted I'd finish it more than once. I finished it.</li>
+      </ul>
     </div>
   </section>
 
   <section>
-    <h2>Leadership</h2>
+    <h2>Leadership and service</h2>
+
     <div class="entry">
-      <div class="entry-head"><h3>Co-Founder, Montgomery Learning Beyond Limits</h3><span class="when">2025 – present</span></div>
-      <p>A free tutoring program at the Skillman Library that has taught about 100 kids with 15+ volunteer tutors. I recruit and schedule the tutors and run outreach.</p>
+      <div class="head"><h3>Co-Founder, Montgomery Learning Beyond Limits</h3><span class="meta">Summer 2025 – present</span></div>
+      <p class="lede">A free tutoring program. Kids tell us what they want to learn, and we match them with one of our volunteer tutors.</p>
+      <ul class="notes">
+        <li>About 100 kids so far, mostly in reading, writing, and coding.</li>
+        <li>We've recruited 15+ volunteer tutors. I make the timetables: who comes in, when, and for how long.</li>
+        <li>I got us space at the Skillman Library, so sessions happen somewhere safe and public, from the afternoon into the evening.</li>
+        <li>Most of our growth came from word of mouth. I handled a lot of the advertising and built our website in Wix.</li>
+      </ul>
     </div>
+
     <div class="entry">
-      <div class="entry-head"><h3>Interact Club</h3><span class="when">2024 – present</span></div>
-      <p>Ranked #1 of 180 members in service points as a sophomore, with about 100 volunteer hours over two years.</p>
+      <div class="head"><h3>Interact Club</h3><span class="meta">2024 – present</span></div>
+      <ul class="notes">
+        <li>Ranked #1 of 180 members in service points as a sophomore, after finishing #5 as a freshman. That's about 100 volunteer hours.</li>
+        <li>Tutored international students in reading and basic math through Princeton Learning Education.</li>
+        <li>Pulled invasive species out of local forests with the FOPOS program, packed and unpacked artwork for the Stonebridge Art Display, helped kids pick books at elementary school book fairs, and helped local businesses advertise at International Night.</li>
+        <li>Designed ticket mockups for the club's Man of the Year event.</li>
+      </ul>
     </div>
+
     <div class="entry">
-      <div class="entry-head"><h3>Varsity Cross Country</h3><span class="when">2024 – present</span></div>
-      <p>Varsity every season since freshman year. 5K best: 18:01.</p>
+      <div class="head"><h3>Varsity Cross Country</h3><span class="meta">2024 – present</span></div>
+      <ul class="notes">
+        <li>Varsity every season since freshman year. Ran an 18:01 5K as a sophomore, which put me in the top 12 for New Jersey sophomores at one point.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="head"><h3>Up next: 5K Robot Run</h3><span class="meta">Planning now</span></div>
+      <p class="lede">A 5K where runners raise money for our robot and for charity. It combines the two things I spend the most time on.</p>
     </div>
   </section>
 
-  <section class="contact">
-    <h2>Contact</h2>
-    <p>Email me at <a href="mailto:vidwathvinayakula@gmail.com">vidwathvinayakula@gmail.com</a>.</p>
+  <section>
+    <h2>Tools I use</h2>
+    <div class="tools">
+      <div><h3>Code</h3><p>Java, Python, Arduino, Scratch (mostly for teaching)</p></div>
+      <div><h3>Testing</h3><p>Data-driven tests, visual and manual assertions, video test cases, GitHub</p></div>
+      <div><h3>Fabrication</h3><p>Autodesk Fusion (CAD and CAM), CNC mill and router, Tinkercad</p></div>
+      <div><h3>Design</h3><p>Wix, Canva</p></div>
+    </div>
   </section>
 
-  <footer>Built by hand with HTML and CSS.</footer>
+  <footer>Vidwath Vinayakula, Skillman, NJ. Last updated October 2026.</footer>
 </main>
 
 <script>
   const ns = "http://www.w3.org/2000/svg";
   const disc = document.getElementById("disc");
-  const heights = [0,6,12,18,22,24,25,24,22,18,12,6];
+  const heights = [0, 13, 22, 25, 22, 13];
   heights.forEach((h, i) => {
     const g = document.createElementNS(ns, "g");
-    g.setAttribute("transform", `rotate(${i * 30} 120 120)`);
+    g.setAttribute("transform", `rotate(${i * 60} 120 120)`);
     g.innerHTML =
-      `<rect class="frame" x="103" y="14" width="34" height="36" rx="3"/>` +
-      `<line class="ground" x1="107" y1="47" x2="133" y2="47"/>` +
-      `<circle class="ball" cx="120" cy="${43 - h}" r="4.5"/>`;
+      `<rect class="frame" x="98" y="9" width="44" height="46" rx="1"/>` +
+      `<line class="ground" x1="103" y1="50" x2="137" y2="50"/>` +
+      `<circle class="ball" cx="120" cy="${45 - h}" r="5"/>`;
     disc.appendChild(g);
   });
 
