@@ -1,1 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vidwath Vinayakula</title>
+<meta name="description" content="High school junior in Skillman, NJ. Software testing, CNC fabrication, and things that move.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#E7EAED;
+    --paper:#F6F7F8;
+    --ink:#172030;
+    --muted:#566173;
+    --accent:#2B4BD6;
+    --flash:#FFC531;
+    --line:#C9CFD6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Archivo",system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    font-size:1.0625rem;
+    line-height:1.6;
+  }
+  a{color:var(--accent);text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:64rem;margin:0 auto;padding:0 1.5rem}
 
+  /* Hero */
+  .hero{
+    display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;
+    padding:5rem 0 4rem;
+  }
+  h1{
+    font-stretch:125%;font-weight:800;
+    font-size:clamp(2.6rem,7vw,4.8rem);
+    line-height:.98;letter-spacing:-.01em;
+  }
+  .intro{margin-top:1.25rem;max-width:34rem;font-size:1.2rem;color:var(--muted)}
+  .intro strong{color:var(--ink);font-weight:600}
+
+  /* Strobe demo */
+  figure{width:260px;text-align:center}
+  svg{width:100%;height:auto;display:block}
+  .disc-bg{fill:#D3D8DE;stroke:var(--line);stroke-width:2}
+  .frame{fill:var(--paper);stroke:var(--muted);stroke-width:1}
+  .ground{stroke:var(--muted);stroke-width:1.5}
+  .ball{fill:var(--ink)}
+  .hub{fill:var(--muted)}
+  .shade{fill:var(--ink);opacity:.82}
+  .win-edge{fill:none;stroke:var(--flash);stroke-width:3}
+  .disc{transform-origin:120px 120px;animation:spin 1.2s steps(12,end) infinite}
+  .win-edge{animation:flash .1s linear infinite}
+  .strobe-off .disc{animation-timing-function:linear}
+  .strobe-off .win-edge{animation:none;stroke:var(--muted)}
+  @keyframes spin{to{transform:rotate(-360deg)}}
+  @keyframes flash{0%{opacity:1}40%{opacity:.25}100%{opacity:.25}}
+  figcaption{margin-top:.9rem;font-size:.9rem;color:var(--muted);line-height:1.45}
+  .toggle{
+    margin-top:.9rem;font:inherit;font-weight:600;font-size:.95rem;
+    background:var(--ink);color:var(--paper);border:0;border-radius:999px;
+    padding:.55rem 1.2rem;cursor:pointer;
+  }
+  .toggle:hover{background:var(--accent)}
+  @media (prefers-reduced-motion:reduce){
+    .disc,.win-edge{animation:none}
+  }
+
+  /* Sections */
+  section{padding:3rem 0;border-top:1px solid var(--line)}
+  h2{font-stretch:110%;font-weight:700;font-size:1.6rem;margin-bottom:1.5rem}
+  .entry{padding:1.25rem 0;max-width:46rem}
+  .entry + .entry{border-top:1px dashed var(--line)}
+  .entry-head{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:baseline}
+  h3{font-size:1.15rem;font-weight:700}
+  .when{color:var(--muted);font-size:.95rem;white-space:nowrap}
+  .org{color:var(--muted);font-size:.98rem;margin-bottom:.4rem}
+  .entry p:last-child{max-width:42rem}
+
+  .contact p{font-size:1.25rem;max-width:40rem}
+  footer{padding:2.5rem 0 3rem;color:var(--muted);font-size:.9rem}
+
+  @media (max-width:760px){
+    .hero{grid-template-columns:1fr;padding:3.5rem 0 3rem}
+    figure{margin:0 auto}
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hero">
+    <div>
+      <h1>Vidwath<br>Vinayakula</h1>
+      <p class="intro">High school junior in Skillman, New Jersey. I <strong>test software</strong>, <strong>machine robot parts</strong>, and build things that move.</p>
+    </div>
+
+    <figure id="strobe">
+      <svg viewBox="0 0 240 240" role="img" aria-label="A spinning disc of drawings. A strobe catches each frame in the same spot, so a ball appears to bounce.">
+        <defs>
+          <mask id="win">
+            <rect width="240" height="240" fill="white"/>
+            <rect x="100" y="11" width="40" height="42" rx="5" fill="black"/>
+          </mask>
+        </defs>
+        <circle class="disc-bg" cx="120" cy="120" r="114"/>
+        <g class="disc" id="disc"></g>
+        <circle class="hub" cx="120" cy="120" r="7"/>
+        <circle class="shade" cx="120" cy="120" r="115" mask="url(#win)"/>
+        <rect class="win-edge" x="100" y="11" width="40" height="42" rx="5"/>
+      </svg>
+      <button class="toggle" id="toggle" aria-pressed="true">Strobe: on</button>
+      <figcaption>How my Fabergé egg works: the disc spins, and a strobe catches each drawing in the same spot. Turn the strobe off to see what's really happening.</figcaption>
+    </figure>
+  </header>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="entry-head"><h3>Software Engineering Intern</h3><span class="when">July – Sept. 2026</span></div>
+      <p class="org">Ziplyne</p>
+      <p>Wrote and ran 200+ Java and Python test cases for AI agents that automate HR tasks in Workday for enterprise clients, including Johns Hopkins. I sorted the failures into six categories, benchmarked execution speeds across test frameworks, and presented our findings to the 15-person engineering team, which built our recommendations into a new release. I also produced 100+ video test cases for the company's digital adoption software.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>CNC Captain, FRC Team 1403</h3><span class="when">2024 – present</span></div>
+      <p class="org">Montgomery High School</p>
+      <p>About 95% of last season's robot parts went through our CNC mill and router. I taught myself CAD and CAM in Autodesk Fusion and now train new members on the machines. The team won its first district event in five years, earned the FIRST Quality Award, and qualified for the FIRST Championship in Houston.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="entry">
+      <div class="entry-head"><h3>Fabergé Egg Stroboscope</h3><span class="when">2025</span></div>
+      <p class="org">Independent project · Arduino, Tinkercad</p>
+      <p>An Arduino-powered egg that spins seven interchangeable discs under a strobe light to tell the story of Rasputin. I wrote the motor and strobe code, prototyped the circuit in Tinkercad, and worked through 50+ hours of failures in code, power delivery, and fitting everything inside a curved shell. The demo at the top of this page works the same way.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Leadership</h2>
+    <div class="entry">
+      <div class="entry-head"><h3>Co-Founder, Montgomery Learning Beyond Limits</h3><span class="when">2025 – present</span></div>
+      <p>A free tutoring program at the Skillman Library that has taught about 100 kids with 15+ volunteer tutors. I recruit and schedule the tutors and run outreach.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Interact Club</h3><span class="when">2024 – present</span></div>
+      <p>Ranked #1 of 180 members in service points as a sophomore, with about 100 volunteer hours over two years.</p>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Varsity Cross Country</h3><span class="when">2024 – present</span></div>
+      <p>Varsity every season since freshman year. 5K best: 18:01.</p>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Contact</h2>
+    <p>Email me at <a href="mailto:vidwathvinayakula@gmail.com">vidwathvinayakula@gmail.com</a>.</p>
+  </section>
+
+  <footer>Built by hand with HTML and CSS.</footer>
+</main>
+
+<script>
+  const ns = "http://www.w3.org/2000/svg";
+  const disc = document.getElementById("disc");
+  const heights = [0,6,12,18,22,24,25,24,22,18,12,6];
+  heights.forEach((h, i) => {
+    const g = document.createElementNS(ns, "g");
+    g.setAttribute("transform", `rotate(${i * 30} 120 120)`);
+    g.innerHTML =
+      `<rect class="frame" x="103" y="14" width="34" height="36" rx="3"/>` +
+      `<line class="ground" x1="107" y1="47" x2="133" y2="47"/>` +
+      `<circle class="ball" cx="120" cy="${43 - h}" r="4.5"/>`;
+    disc.appendChild(g);
+  });
+
+  const fig = document.getElementById("strobe");
+  const btn = document.getElementById("toggle");
+  btn.addEventListener("click", () => {
+    const on = btn.getAttribute("aria-pressed") === "true";
+    btn.setAttribute("aria-pressed", String(!on));
+    btn.textContent = on ? "Strobe: off" : "Strobe: on";
+    fig.classList.toggle("strobe-off", on);
+  });
+</script>
+</body>
+</html>
